@@ -1,62 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Your app</title>
-<link rel="icon" href="https://vibekit.bot/public/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="https://vibekit.bot/public/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://vibekit.bot/public/favicon-16.png">
-<link rel="apple-touch-icon" href="https://vibekit.bot/public/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-<div class="wrap">
-  <div class="topbar">
-    <a href="https://vibekit.bot" class="wordmark"><img src="https://vibekit.bot/public/Group2.png" alt=""> VibeKit</a>
-    <div class="status"><span class="dot"></span>Your app is live</div>
-  </div>
-
-  <h1 id="app-name">Your app</h1>
-  <p class="lead">This is your starter. Open the chat with your AI agent and tell it what to build — the page updates as you go.</p>
-
-  <div class="cards">
-    <div class="card">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-      <h3>Chat to customize</h3>
-      <p>Describe what you want. Your agent edits the code and redeploys automatically.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-      <h3>Iterate fast</h3>
-      <p>Every change you ask for ships in seconds, with full source on GitHub.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-      <h3>Yours to keep</h3>
-      <p>The code is yours. Connect a custom domain or fork it whenever you like.</p>
-    </div>
-  </div>
-
-  <a class="cta" id="open-chat" href="https://app.vibekit.bot">Open chat
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-  </a>
-
-  <footer>
-    <span>Built with VibeKit</span>
-    <a href="https://vibekit.bot">vibekit.bot</a>
-  </footer>
-</div>
-
-<script>
-  // Name the page after the subdomain it's served from, so this file stays
-  // static (no build step, no server templating).
-  var sub = location.hostname.split('.')[0];
-  if (sub && sub !== 'localhost') {
-    document.getElementById('app-name').textContent = sub;
-    document.title = sub;
-    document.getElementById('open-chat').href = 'https://app.vibekit.bot/app/' + sub;
-  }
-</script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riff Studio — AI Photo Editor</title><link rel="stylesheet" href="/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head><body>
+<header><a class="brand" href="/"><i data-lucide="sparkles"></i> RIFF <span>STUDIO</span></a><nav><a href="#editor">Editor</a><a href="#gallery">Community</a><button class="account">Sign in</button></nav></header>
+<main>
+  <section class="intro"><div><p class="eyebrow">AI PHOTO EDITOR</p><h1>Edit the impossible.<br><em>Keep it yours.</em></h1><p class="sub">Fast, natural photo transformations with precise creative direction. Built for expressive work, not watered-down results.</p></div><div class="trust"><i data-lucide="shield-check"></i><span>Your uploads stay private unless you choose to share.</span></div></section>
+  <section class="workspace" id="editor">
+    <div class="canvas" id="dropzone"><input id="file" type="file" accept="image/*" hidden><div class="empty" id="empty"><div class="upload-icon"><i data-lucide="image-up"></i></div><h2>Drop a photo here</h2><p>or choose one from your device</p><button class="outline" id="browse">Choose photo</button><small>JPG, PNG, WEBP · up to 20MB</small></div><img id="preview" alt="Your uploaded photo preview"></div>
+    <aside class="tools"><div class="tools-head"><div><p class="eyebrow">CREATE</p><h2>What should change?</h2></div><button class="undo" title="Undo"><i data-lucide="undo-2"></i></button></div>
+      <div class="tool-grid">
+        <button data-action="Remove"><i data-lucide="eraser"></i><span>Remove</span></button><button data-action="Replace background"><i data-lucide="panel-top"></i><span>Background</span></button>
+        <button data-action="Expand image"><i data-lucide="maximize"></i><span>Expand</span></button><button data-action="Rotate angle"><i data-lucide="rotate-3d"></i><span>New angle</span></button>
+        <button data-action="Change age"><i data-lucide="clock-3"></i><span>Age</span></button><button data-action="Edit text in photo"><i data-lucide="type"></i><span>Text edit</span></button>
+      </div>
+      <label for="prompt">Describe your edit</label><textarea id="prompt" placeholder="e.g. Remove the person in the background and extend the beach on the left"></textarea>
+      <div class="settings"><button><i data-lucide="brush"></i> Select area</button><button><i data-lucide="sliders-horizontal"></i> Settings</button></div>
+      <button class="generate" id="generate"><i data-lucide="wand-sparkles"></i> Generate edit</button><p class="note">You control what gets shared. Adult artistic content is supported where lawful.</p>
+    </aside>
+  </section>
+  <section class="quick"><p class="eyebrow">QUICK START</p><h2>One tap edits</h2><div class="chips"><button>Remove distractions</button><button>Extend canvas</button><button>Clean background</button><button>Change lighting</button></div></section>
+  <section class="gallery" id="gallery"><div><p class="eyebrow">COMMUNITY LIBRARY</p><h2>Images shared with permission.</h2><p>Discover references and creations from artists who chose to make their work available.</p></div><button class="outline"><i data-lucide="search"></i> Browse library</button></section>
+</main><script>
+lucide.createIcons();
+const file=document.querySelector('#file'), preview=document.querySelector('#preview'), drop=document.querySelector('#dropzone'), empty=document.querySelector('#empty'), prompt=document.querySelector('#prompt');
+function load(f){if(!f || !f.type.startsWith('image/'))return; preview.src=URL.createObjectURL(f); preview.style.display='block'; empty.style.display='none';drop.classList.add('has-image')}
+document.querySelector('#browse').onclick=()=>file.click(); file.onchange=e=>load(e.target.files[0]);
+;['dragenter','dragover'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.add('drag')}));['dragleave','drop'].forEach(e=>drop.addEventListener(e,x=>{x.preventDefault();drop.classList.remove('drag')}));drop.addEventListener('drop',e=>load(e.dataTransfer.files[0]));
+document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{prompt.value=b.dataset.action.toLowerCase()+': '+prompt.value;prompt.focus()});
+document.querySelector('#generate').onclick=()=>{if(!file.files[0]){document.querySelector('#browse').click();return} if(!prompt.value.trim()){prompt.focus();return} alert('Your edit request is ready. AI generation will be connected next.');};
+</script></body></html>
