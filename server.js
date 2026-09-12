@@ -27,6 +27,15 @@ const MIME = {
 //   },
 const routes = {
   'GET /health': (req, res) => json(res, { status: 'ok', uptime: process.uptime() }),
+  // The ComfyUI host stays server-side. Set COMFYUI_BASE_URL in the app's
+  // Environment after hosting your own ComfyUI instance.
+  'GET /api/image-provider-status': (req, res) => json(res, {
+    provider: 'ComfyUI-compatible',
+    connected: Boolean(process.env.COMFYUI_BASE_URL),
+    message: process.env.COMFYUI_BASE_URL
+      ? 'ComfyUI connection is configured.'
+      : 'Add COMFYUI_BASE_URL in Environment to connect your self-hosted workflow.'
+  }),
 };
 
 function json(res, data, status = 200) {
